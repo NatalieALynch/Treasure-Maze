@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
    public Rigidbody rb;
+   public GameObject Human;
 
     private Vector2 startTouchPosition;
     private Vector2 endTouchPosition;
@@ -33,11 +34,13 @@ public class PlayerMovement : MonoBehaviour
                 if(endTouchPosition.x < startTouchPosition.x)
                 {
                     Up();
+                    Human.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.up);
                 }
             
                 if(endTouchPosition.x > startTouchPosition.x)
                 {
                     Down();
+                    Human.transform.rotation = Quaternion.LookRotation(Camera.main.transform.up);
                 }
             }
            
@@ -46,11 +49,13 @@ public class PlayerMovement : MonoBehaviour
                 if(endTouchPosition.y < startTouchPosition.y)
                 {
                     Left();
+                    Human.transform.rotation = Quaternion.LookRotation(Camera.main.transform.right);
                 }
             
                 if(endTouchPosition.x > startTouchPosition.x)
                 {
                     Right();
+                    Human.transform.rotation = Quaternion.LookRotation(-Camera.main.transform.right);
                 }
             }
         }
